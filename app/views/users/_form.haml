@@ -1,0 +1,21 @@
+= form_for @user do |f|
+  -if @user.errors.any?  
+    #errors
+      -@company.errors.full_messages.each do |msg|
+        %ul
+          %li=msg
+  #name
+    .title Name
+    =f.text_field :name
+  #email
+    .title Email
+    =f.text_field :email
+  #password
+    .title Password
+    =f.password_field :password
+  #password
+    .title Password Confirmation
+    =f.password_field :password_confirmation
+  #submit.green_button
+    =f.submit 'Submit'
+  .clear

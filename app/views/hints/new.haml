@@ -1,0 +1,15 @@
+#new_hint
+  .sec
+    .title
+      New Hint
+  = form_for [@assignment, @hint] do |f|
+    .hint
+      #text
+        .title
+          Text:
+        = f.text_field :text
+      #submit
+        .green_button
+          =f.submit 'Create'
+        .blue_button#cancel
+          Cancel

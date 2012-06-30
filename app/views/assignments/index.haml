@@ -1,0 +1,44 @@
+#assignment_index
+  .sec
+    .title Assignments
+  #warning
+    #symbol !
+    Warning: If you are enrolled in the Compilers class for a grade and complete an assignment before it is open for the class, your grade may not be recorded.
+  #assignment_list
+    %ul
+      -if current_user && current_user.instructor
+        -@assignments.each do |a|
+          = link_to assignment_path a do
+            %li
+              #done
+                -# Display check mark if user has completed this assignment
+                -if Proof.where(:finished=>true, :assignment_id=>a.id, :user_id=>current_user.id).first
+                  %span 3
+                #assignment_name
+                  =a.name
+                .bridge
+                  posted
+                #assignment_posted
+                  =time_ago_in_words (a.updated_at || a.posted)
+                  ago
+                -if !a.visible
+                  =' - (hidden)'
+      -else
+        -@assignments.select{|x| x.visible}.each do |a|
+          = link_to assignment_path a do
+            %li
+              #done
+                -# Display check mark if user has completed this assignment
+                -if Proof.where(:finished=>true, :assignment_id=>a.id, :user_id=>current_user.id).first
+                  %span 3
+                #assignment_name
+                  =a.name
+                .bridge
+                  posted
+                #assignment_posted
+                  =time_ago_in_words (a.updated_at || a.posted)
+                  ago
+  #sidebar
+    -if current_user && current_user.instructor
+      .green_button#new_assignment
+        New Assignment

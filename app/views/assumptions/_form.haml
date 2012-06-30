@@ -1,0 +1,15 @@
+= form_for [@assignment, @assumption] do |f|
+  #assumption_name
+    .title Name:
+    =f.text_field :name
+    = f.hidden_field :assignment_id, :value => @assignment.id
+  #submit
+    .green_button
+      =f.submit
+    #cancel
+      .blue_button
+        Cancel
+    -if delete
+      #delete
+        .blue_button
+          =link_to 'Delete', assignment_assumption_path(@assignment, @assumption), :method => :DELETE

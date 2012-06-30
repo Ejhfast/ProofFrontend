@@ -1,0 +1,84 @@
+#edit_assignment
+  .sec
+    .title 
+      Edit Assignment
+      -if current_user && current_user.instructor
+        %span
+          =link_to 'Edit', edit_assignment_path(@assignment)
+        %span
+          =link_to 'Manage', '/manage/'+Node.root(@assignment.id).id.to_s
+        %span
+          =link_to 'Student View', assignment_path(@assignment)
+  = form_for @assignment do |f|
+    #fields
+      #name
+        .title Name:
+        =f.text_field :name
+      #visible
+        .title Visible:
+        =f.check_box :visible
+      #goal
+        .title Goal:
+        =f.text_field :goal
+      #hide_goal
+        .title Hide Goal:
+        =f.check_box :hide_goal
+      #description
+        .title Description:
+        =f.text_area :description, :rows => 5
+      #submit
+        .green_button
+          =f.submit 'Update Assignment'
+        .blue_button#verify
+          Verify
+    #manage_assignment
+      .sec
+        .title
+          Manage Assignment
+          -if @assignment.visible
+            (some options hidden)
+        .blue_button#copy
+          =link_to 'Copy Ruleset Skeleton', '/assignments/'+@assignment.id.to_s+'/copy', :method => :post
+        -if !@assignment.visible
+          .blue_button#clear
+            =link_to 'Clear Proofs', '/assignments/'+@assignment.id.to_s+'/clear_proofs', :method => :post, :confirm => 'Are you sure you want to clear the proof cache?'
+          .blue_button#deleteit
+            =link_to 'Delete Assignment', assignment_path(@assignment), :method => :delete, :confirm => 'Are you sure that you want to delete this assignment?'
+    .clear
+    .sec
+      .title Edit Rewrite Language
+    .third
+      .title Rulesets:
+      #current_rulesets
+        %ul
+          - if @assignment.rulesets.size > 0
+            - @assignment.rulesets.each do |rs|
+              = link_to '#', :onclick => ("javascript:edit_ruleset(\"" + @assignment.id.to_s + "\",\"" + rs.id.to_s + "\")") do
+                %li= rs.name
+          - else
+            %li Nothing here!
+      .green_button#add_ruleset New
+    .third
+      .title Assumptions:
+      #current_assumptions
+        %ul
+          -if @assignment.assumptions.size > 0
+            -@assignment.assumptions.each do |a|
+              = link_to '#', :onclick => ("javascript:edit_assumption(\""+ @assignment.id.to_s + "\",\"" + a.id.to_s + "\")") do
+                %li= a.name
+          -else
+            %li Nothing here!
+      .green_button#add_assumption New
+    .third
+      .title Syntax:
+      #current_syntax
+        %ul
+          - if @assignment.syntaxes.size > 0
+            -@assignment.syntaxes.each do |a|
+              = link_to '#', :onclick => ("javascript:edit_syntax(\""+ @assignment.id.to_s + "\",\"" + a.id.to_s + "\")") do
+                %li= a.name
+          -else
+            %li Nothing here!
+      .green_button#add_syntax New
+    .clear
+

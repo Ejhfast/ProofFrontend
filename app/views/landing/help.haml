@@ -1,0 +1,66 @@
+#help
+  %h1 Instructions
+  %p
+    Welcome to DeduceIt! This is an interactive proof checking system. This system allows you
+    to enter proofs using the text boxes in the application, and will check that your proof is
+    valid as you progress toward your goal. If you have not seen it already, please watch the
+    -if session[:stanford]
+      =link_to 'video tutorial to DeduceIt', 'https://stanford.coursera.org/compilers/lecture/view?lecture_id=18'
+    -else
+      =link_to 'video tutorial to DeduceIt', 'https://class.coursera.org/compilers/lecture/view?lecture_id=18'
+    on the Coursera class page.
+  -#%iframe{:allowscriptaccess => "always", :allowFullScreen => "true", :frameborder => "0", :height => "430", :src => "http://www.youtube.com/embed/vLn9C0nyw0U", :title => "DeduceIt Demo", :width => "640", :align => "middle"}
+
+  %h3 Using DeduceIt
+  %p
+    In each DeduceIt assignment, you will attempt to prove the goal, using the provided sets of
+    rules and assumptions. After each step, you can click "Submit Proof" to verify the statements
+    you have entered. If you successfully prove the goal statement, you will see the following
+    message, indicating that you have completed the assignment.
+  %p
+    A diagram describing the layout of the screen is shown below:
+  .screenshot=image_tag 'layout_explanation.png', :width=>800
+  %p
+    Note that a step of the proof may also appear highlighted in brown, which indicates that the
+    line has a syntax error.
+
+  %h3 Syntax
+  %p
+    Below is a list of operators accepted by DeduceIt, listed in order of precedence:
+  %ol
+    %li ( )
+    %li ~ (unary)
+    %li - (unary)
+    -#%li = (unary)
+    %li ! (unary)
+    %li . (for strings, right associative)
+    %li &, |, comma (left associative)
+    %li *, / (both left associative)
+    %li +, - (both left associative)
+    %li = (left associative)
+    %li != (left associative)
+    %li :=, ~> (left associative, instructor-only)
+  %p
+    Additionally, some assignments use custom functions. For example, the 2-argument function foo
+    might be written as \foo{arg1}{arg2}. Constants are represented using a similar syntax; these
+    appear as no-argument "functions," e.g. \e. Note that curly braces are only used for function
+    syntax--use parentheses to specify precedence.
+
+  %h3 Other Important Notes
+  %ul
+    %li
+      There are known visual artifacts when using this tool under Internet Explorer. For the best
+      experience, please use Firefox, Chrome, or Safari when using DeduceIt
+    %li
+      If you are taking the Compilers class via Coursera and want to receive credit for your work
+      on DeduceIt, make sure you use the "Stanford login via Coursera" or "Public login via
+      Coursera" as appropriate. If you are logging in through this option for the first time, your
+      account will be created automatically.
+    %li
+      Some users have found that the system occasionally hangs when attempting to verify a proof
+      steps. If no feedback is given after a few seconds, try reloading the page first.
+  -#%h1 FAQ
+  -#%h3 Where can I send feedback to the team about this project?
+  -#%p
+    Send an email with comments to 
+    %img{:src => "/assets/email.png", :align => "middle"}, and it will be shared with the rest of the team. Thanks!

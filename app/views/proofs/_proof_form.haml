@@ -1,0 +1,22 @@
+= form_for [@assignment, @proof], :remote => true do |f|
+  = f.hidden_field :assignment_id, :value => @assignment.id
+  #prooflines_list
+    = f.fields_for :prooflines, @prooflines do |builder|
+      =render '/assignments/proofline_fields', :f => builder
+  #submit
+    #newline
+    / .blue_button
+    /       = link_to_add_fields "Add Line", f, :prooflines
+    .blue_button
+      =f.submit 'Update Proof', :id => 'submit_proof'
+    - if @proof.assignment_id
+      .red_button#delete_proof
+        =link_to 'Clear Proof', assignment_proof_path(@assignment, @proof), :method => :delete, :confirm => "Are you sure you want to clear the proof?"
+- if @proof.finished or not @assignment.hide_goal
+  #done_or_goal
+    - if @proof.finished
+      %span 3
+      You've finished this assignment.
+    - else
+      Goal:
+      =@assignment.goal

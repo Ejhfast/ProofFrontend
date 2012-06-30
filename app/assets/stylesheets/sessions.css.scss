@@ -1,0 +1,71 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+@import "compass/css3/opacity";
+@import "base";
+
+#login, #new_user, #edit_user{
+  @include single-text-shadow(white, 1px, 1px, 5px);
+  margin:20px 0px;
+  .sec{
+    width:100%;
+    .title{
+      font-weight:800;
+      padding:0px 0px 10px 0px;
+      border-bottom:2px solid darker($main-color, 10%);
+      color:darken($main-color, 70%);
+      font-size:1.2em;
+    }
+  }
+  .half{
+    float:left;
+    width:60%;
+    margin:20px 0px;
+  }
+  form{
+    margin:0px;
+  }
+  #email, #password, #name{
+    float:left;
+    margin:5px 0px;
+    width:100%;
+    .title{
+      float:left;
+      width:30%;
+      color:darken($main-color, 70%);
+      font-weight:800;
+      text-align:right;
+      margin:0px 10px 0px 0px;
+      padding:12px 0px 0px 0px;
+    }
+    input{
+      float:left;
+      width:60%;
+      padding:5px;
+      background-color:lighten($main-color,2%);
+      @include box-shadow(darken($main-color,10%),0px,1px,10px);
+      @include border-radius(5px);
+      border:none;
+      font-size:1.2em;
+    }
+  }
+  #submit.green_button{
+    padding:2px 5px;
+    margin:14px 0% 0px 32%;
+    input{
+      background:none;
+      border:none;
+      padding:none;
+      margin:none;
+      font-weight:800;
+      color:white;
+      font-size:1.2em;
+    }  
+  }
+  #sidebar{
+    margin:30px 0px 0px 5%;
+    padding:2px 5px;
+    width:30%;
+    float:left;
+  }
+}

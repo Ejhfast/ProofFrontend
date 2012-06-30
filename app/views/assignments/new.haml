@@ -1,0 +1,22 @@
+#new_assignment
+  .sec
+    .title
+      New Assignment
+  = form_for @assignment do |f|
+    .assignment
+      #name
+        .title
+          Name:
+        = f.text_field :name
+      #description
+        .title
+          Description:
+        = f.text_area :description, :rows => 8, :placeholder => 'Optional description: you can change this later.'
+      #visible
+        .title Visible:
+        = f.check_box :visible
+      #submit
+        .green_button
+          =f.submit 'Create'
+        .blue_button#cancel
+          Cancel

@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %title DeduceIt
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    %header
+      #padding
+        #logo
+          =link_to '/' do
+            DeduceIt
+        #nav
+          %ul
+            %li=link_to 'HELP', '/help'
+            -if current_user && !current_user.external
+              %li=link_to 'ACCOUNT', edit_user_path(current_user)
+            -if current_user
+              %li=link_to 'LOGOUT', '/sign_out'
+            -else
+              %li=link_to 'LOGIN', '/sign_in'
+              %li=link_to 'SIGNUP', '/sign_up'
+    #contentbox
+      = yield

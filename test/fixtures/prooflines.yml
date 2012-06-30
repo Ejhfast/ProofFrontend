@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  conclusion: MyString
+  proof_id: 1
+
+two:
+  conclusion: MyString
+  proof_id: 1

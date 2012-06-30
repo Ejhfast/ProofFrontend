@@ -1,0 +1,37 @@
+= form_for [@assignment, @ruleset] do |f|
+  #ruleset_name
+    .title Name:
+    = f.text_field :name
+    = f.hidden_field :assignment_id, :value => @assignment.id
+  #description
+    .title Description:
+    =f.text_field :description
+  #type
+    .title Not Required:
+    #check
+      =f.check_box :free
+  #rules
+    .title Rules:
+    #rules_list
+      = f.fields_for :rules do |builder|
+        = render 'rule_fields', :f => builder
+    #new_rule
+      .blue_button
+        = link_to_add_fields "Add Rule", f, :rules
+  #constraints
+    .title Constraints:
+    #constraints_list
+      =f.fields_for :constraints do |builder|
+        = render 'constraint_fields', :f => builder
+    #new_constraint
+      .blue_button
+        =link_to_add_fields "Add Constraint", f, :constraints
+  #submit
+    .green_button
+      =f.submit submit_name
+    .blue_button#cancel
+      Cancel
+    -if delete
+      #delete_ruleset
+        .blue_button
+          =link_to 'Delete', assignment_ruleset_path(@assignment, @ruleset), :method => :DELETE

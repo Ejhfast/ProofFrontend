@@ -1,0 +1,10 @@
+.rule
+  .lhs
+    = f.text_field :lhs, :placeholder => 'Left side'
+  .type
+    = f.select :type, [['=','='],['->','->']]
+  .rhs
+    = f.text_field :rhs, :placeholder => 'Right side'
+  = f.hidden_field :_destroy
+  .del
+    *

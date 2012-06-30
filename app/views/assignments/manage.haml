@@ -1,0 +1,95 @@
+#manage_assignment
+  .sec
+    .title 
+      Manage Assignment
+      -if current_user && current_user.instructor
+        %span
+          =link_to 'Edit', edit_assignment_path(@assignment)
+        %span
+          =link_to 'Manage', '/manage/'+Node.root(@assignment.id).id.to_s
+        %span
+          =link_to 'Student View', assignment_path(@assignment)
+  #assign_id
+    =@assignment.id
+  #node_id
+    =@node.id
+  #parent_id
+    =@parent.id
+  #selector
+    %ul
+      .node_title Child Nodes
+      -if @node.edges.size > 0
+        - @node.edges.map{|x| x.get_node}.sort_by{|n| -1 * n.count }.each do |n|
+          =link_to "/manage/#{n.id}?parent=#{@node.id}" do
+            %li{:class => ('red' if (n.valid == false))}
+              =n.proofline.conclusion
+            .count=n.count
+      -else
+        %li.none
+          No child nodes
+  -if @node.hash_str != "root"
+    #window
+      =link_to "/manage/#{@parent.id}" do
+        #parent
+          %span.up
+            {
+          Back to Parent
+      #num_students
+        %span.big
+          =@node.count
+        students on path
+      #valid_proof
+        -if @node.valid
+          .good
+            =link_to "2", "/manage/#{@node.id}/toggle/#{@parent.id}", :method => :post 
+          correct proof
+        -else
+          .bad
+            =link_to "*", "/manage/#{@node.id}/toggle/#{@parent.id}", :method => :post 
+          incorrect proof
+      #proofline
+        #conc
+          =@node.proofline.conclusion
+        #rule
+          =@node.proofline.sanitize_ruleset
+        #assumps
+          %ul
+            -@node.proofline.assumptions.each do |a|
+              %li=a
+        .clear
+      - if @node.syntax_error
+        #syntax
+          %h1 Note: This step failed to parse.
+      #hints
+        %h1
+          Hints for this proof step
+        -if @node.hints.size > 0  
+          %ul
+            -@node.hints.each do |h|
+              %li
+                = h.text
+                .del
+                  =link_to '*', assignment_hint_path(@assignment, h), :method => :delete
+
+        -else
+          %ul
+            %li No hints
+      .green_button#new_hint
+        New Hint
+      
+  -else
+    #window
+      #parent
+        Root
+      #finished
+        Number of students who have finished:
+        =@students.select{|s| !s[2]}.size
+      #finished
+        Number of instructors who have finished:
+        =@students.select{|s| s[2]}.size
+      #names
+        %ul.student_list
+          -@students.select{|s| s[2]}.each do |s|
+            %li
+              %span.name=s[0]
+              %span.email=s[1]

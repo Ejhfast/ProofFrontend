@@ -1,0 +1,13 @@
+var sec = "<div class='sec' id='spinner'><div class='title'>Proof:</div></div>";
+if($('#stop').attr('hit') !== "true"){
+  $('#proof').html(sec+"<%= escape_javascript(render('/proofs/proof_form')) %>");
+  <% if false && @failure %>
+    make_popup("Invalid Proof","<%= @failure.html_safe %>");
+  <% end %>
+  spinner_listener();
+}
+$('.chzn-select').chosen();
+$('#stop').attr('hit','false');
+
+
+

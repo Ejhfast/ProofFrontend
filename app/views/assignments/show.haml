@@ -1,0 +1,61 @@
+#show_assignment
+  #stop
+  #main_title
+    =@assignment.name
+    -if current_user && current_user.instructor
+      %span
+        =link_to 'Edit', edit_assignment_path(@assignment)
+      %span
+        =link_to 'Manage', '/manage/'+Node.root(@assignment.id).id.to_s
+  #info
+    - if not @assignment.hide_goal
+      #goal
+        .sec
+          .title To show:
+        .text=@assignment.goal
+    #description
+      .sec
+        .title Description:
+      .text=@assignment.description.html_safe rescue ""
+  #rulesets
+    .expand
+      .sec
+        .title 
+          Required Rules
+          %span.toggle s
+      %ul
+        -@assignment.rulesets.select{|x| x.free == false }.each do |rs|
+          %li
+            .name= rs.name
+            .description= rs.description
+    .expand
+      .sec
+        .title 
+          Free Rules:
+          %span.toggle s
+      %ul
+        -@assignment.rulesets.select{|x| x.free == true }.each do |rs|
+          %li
+            .name= rs.name
+            .description= rs.description
+  #assumptions
+    .sec
+      .title Givens:
+    %ul
+      -@assignment.assumptions.each do |as|
+        %li
+          .name= as.name
+  #proof
+    -if @proof.assignment_id
+      :javascript 
+        $(document).ready(function(){
+          $('#spinner').spin(opts);
+          $('#prooflines_list').fadeTo(0,.2)
+          $('#proof form').submit();
+        });
+    .sec#spinner
+      .title
+        Derivation:
+    = render 'proofs/proof_form'
+
+    

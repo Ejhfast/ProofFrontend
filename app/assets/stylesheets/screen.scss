@@ -1,0 +1,191 @@
+@import "compass/reset";
+@import "compass/css3/gradient";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
+@import "compass/css3/opacity";
+
+
+@import "base";
+
+body{ 
+  background-color:$main-color;
+  font-family:'helvetica neue','helvetica';
+}
+
+header{
+  @include linear-gradient(#2a2a2a, #575757);
+  @include box-shadow(#cecece,0px,5px,10px);
+  height:75px;
+  width:100%;
+  #padding{
+    width:$main-width;
+    margin:0px auto;
+  }
+  #logo{
+    float:left;
+    width:70%;
+    a{
+      color:white;
+      text-decoration:none;
+      font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue", helvetica;
+      font-weight:800;
+      font-size:2em;
+      position:relative;
+      top:20px;
+    }
+    img{
+      padding:20px 0px 0px 0px;
+      width:175px;
+    }
+  }
+  #nav{
+    float:left;
+    width:30%;
+    ul{
+      float:left;
+      margin:35px 0px 0px 0px;
+      font-size:.8em;
+      a{
+        color:darken($main-color,10%);
+        text-decoration:none;
+      }
+      a:hover{
+        @include opacity(.7);
+      }
+      li{
+        font-weight:200;
+        float:left;
+        padding:0px 0px 0px 20px;
+      }
+    }
+  }
+}
+
+.sec{
+  .title{
+    color:darken($main-color,60%);
+    font-weight:800;
+    padding:0px 0px 10px;
+    border-bottom:2px solid darken($main-color,10%);
+  }
+}
+
+#contentbox{
+  width:$main-width;
+  margin:20px auto;
+  @include single-text-shadow(white, 1px, 1px, 5px);
+}
+.clear{
+  clear:both;
+}
+#cancel{
+  float:left;
+}
+.green_button{
+  float:left;
+  @include box-shadow(darken($main-color,10%),0px,1px,10px);
+  @include border-radius(5px);
+  @include linear-gradient(#8bc78a,#89b188 60%);
+  //background-color:#8bc78a;
+  text-shadow:none;
+  //width:20%;
+  padding:8px 10px;
+  text-align:center;
+  font-weight:800;
+  font-size:.8em;
+  color:lighten($main-color,50%);
+}
+.blue_button{
+  float:left;
+  @include box-shadow(darken($main-color,10%),0px,1px,10px);
+  @include border-radius(5px);
+  @include linear-gradient(lighten(#88a9b1,9%), #88a9b1 60%);
+  //background-color:#8bc78a;
+  text-shadow:none;
+  //width:20%;
+  padding:8px 10px;
+  text-align:center;
+  font-weight:800;
+  font-size:.8em;
+  color:lighten($main-color,50%);
+}
+.red_button{
+  float:left;
+  @include box-shadow(darken($main-color,10%),0px,1px,10px);
+  @include border-radius(5px);
+  @include linear-gradient(lighten(#bd7274,9%), #bd7274 60%);
+  //background-color:#8bc78a;
+  text-shadow:none;
+  //width:20%;
+  padding:8px 10px;
+  text-align:center;
+  font-weight:800;
+  font-size:.8em;
+  color:lighten($main-color,50%);  
+}
+.green_button,.blue_button,.red_button{
+  a{
+    color:white;
+    text-decoration:none;
+  }
+  input{
+    border:none;
+    margin:none;
+    padding:none;
+    background:none;
+    color:white;
+    font-weight:800;
+  }
+}
+.green_button:hover,.blue_button:hover{
+  @include opacity(.7);
+}
+
+// popover
+
+#overlay{
+  @include opacity(.5);
+  position:fixed;
+  top:0px;
+  bottom:0px;
+  left:0px;
+  right:0px;
+  z-index:1000;
+  background-color:black;
+}
+$popup-width: 600px;
+
+#popup{
+  //width:$popup-width;
+  position:absolute;
+  top:15%;
+  left:25%;
+  width:50%;
+  background-color:$main-color;
+  @include box-shadow(darken($main-color,20%),0px,1px,20px);
+  @include border-radius(5px);
+  z-index:1001;
+  padding:20px;
+
+}
+#msg{
+  position:absolute;
+  top:15%;
+  left:35%;
+  width:30%;
+  background-color:$main-color;
+  @include box-shadow(darken($main-color,20%),0px,1px,20px);
+  @include border-radius(5px);
+  z-index:1001;
+  padding:20px;
+  b{
+    font-weight:800;
+  }
+  .msg{
+    margin:20px 0px;
+    font-size:1em;
+    font-weight:400;
+    color:darken($main-color, 60%);
+  }
+}

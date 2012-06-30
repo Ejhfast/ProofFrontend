@@ -1,0 +1,284 @@
+@import "compass/css3/gradient";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
+@import "compass/css3/opacity";
+@import "base";
+
+#manage_assignment{
+  .sec{
+    margin-bottom:30px;
+    .title{
+      color:darken($main-color,60%);
+      font-weight:800;
+      padding:0px 0px 10px;
+      border-bottom:2px solid darken($main-color,10%);
+      span{
+        a{
+          color:darken(white,40%);
+          text-decoration:none;
+        }
+        margin-left:10px;
+      }
+    }
+  }
+  ul.student_list{
+    margin:10px 0px 0px 30px;
+    li{
+      line-height:1.6em;
+      span.email{
+        margin-left:10px;
+      }
+    }
+  }
+  #finished{
+    font-weight:800;
+    padding:10px 10px 0px 0px;
+  }
+  #assign_id,#node_id,#parent_id{
+    display:none;
+  }
+  #big_pic{
+    margin-top:50px;
+    text-align:center;
+    color:darken($main-color,20%);
+    font-size:2em;
+    span.pic{
+      font-size:1.5em;
+      font-family:'pictos';
+      margin-right:10px;
+      color:darken($main-color,20%);
+    }
+  }
+  #main_title{
+    float:left;
+    width:100%;
+    font-size:1.8em;
+    font-weight:800;
+    margin:0px 0px 50px 0px;
+    span{
+      text-shadow:none;
+      font-weight:200;
+      color:darken($main-color, 20%);
+      padding:0px 0px 0px 10px;
+      font-size:.7em;
+      .pictos{
+        display:inline;
+        font-family:'pictos';
+        padding:0px 0px 3px 0px;
+      }
+      a{
+        color:inherit;
+        text-decoration:none;
+      }
+    }
+  }
+  #selector{
+    float:left;
+    width:30%;
+    height:800px;
+    overflow-y:auto;
+    ul{
+      text-shadow:none;
+      .node_title{
+        margin-bottom:15px;
+        font-size:1.2em;
+        font-weight:800;
+      }
+      a{
+        color:inherit;
+        text-decoration:none;
+      }
+      li{
+        color:darken($main-color,60%); //$main-color; //lighten(black,20%);
+        float:left;
+        width:75%;
+        font-weight:200;
+        padding:5%;
+        margin-bottom:7px;
+        font-size:1.2em;
+        background-color:lighten($main-color,10%);
+        @include border-radius(5px);
+      }
+      li.red{
+        background-color:lighten($bright-red,45%)//#e7b0b0; //lighten($red,5%);
+      }
+      .count{
+        float:left;
+        position:relative;
+        right:10px;
+        bottom:5px;
+        background-color:$bright-blue;
+        @include border-radius(2px);
+        padding:5px;
+        color:white;
+        font-weight:800;
+        font-size:.7em;
+      }
+      li:hover{
+        @include opacity(.5);
+      }
+      li.none:hover{
+        @include opacity(1);
+      }
+    }
+  }
+  #window{
+    float:left;
+    width:65%;
+    height:800px;
+    margin-left:5%;
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+    #parent{
+      width:200px;
+      background-color:lighten($main-color,5%);
+      @include border-radius(5px);
+      padding:1em;
+      margin:0px auto 20px auto;
+      text-align:center;
+      font-weight:800;
+      text-shadow:none;
+      span.up{
+        font-family:'pictos';
+        font-size:1.5em;
+      }
+    }
+    a #parent:hover{
+      @include opacity(.5);
+    }
+    #proofline{
+      width:100%;
+      margin:20px 0px;
+      #conc,#rule,#assumps{
+        float:left;
+        width:33%;
+        font-weight:800;
+        font-size:1.2em;
+      }
+      #assumps{
+        text-align:right;
+      }
+      #rule{
+        text-align:center;
+      }
+      padding:10px;
+      background-color:lighten($main-color,10%);
+    }
+    #valid_proof,#num_students{
+      display:inline;
+      margin-right:20px;
+      font-weight:800;
+      color:lighten(black,30%);
+    }
+    #valid_proof{
+      .good,.bad,{
+        display:inline;
+        font-size:4em;
+        position:relative;
+        left:20px;
+        text-decoration:none;
+      }
+      a:hover{
+        @include opacity(.5);
+      }
+    }
+    #num_students{
+      span.big{
+        font-size:3em;
+        color:black;
+      }
+    }
+  }
+  .syntax{
+    h1{
+      font-size:1em;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+  }
+  .good{
+    font-family:'pictos';
+    color:$green;
+  }
+  .bad{
+    font-family:'pictos';
+    color:$red;
+  }
+  #hints{
+    h1{
+      font-size:1em;
+      font-weight:800;
+      margin-bottom:20px;
+    }
+    ul{
+      margin-bottom:20px;
+      li{
+        padding:10px;
+        background-color:darken($main-color,5%);
+        margin-bottom:3px;
+        .del{
+          float:right;
+          font-family:'pictos';
+          color:lighten($bright-red,30%);
+          font-size:1.5em;
+          text-shadow:none;
+          position:relative;
+          bottom:3px;
+        }
+        a{
+          cursor:normal;
+        }
+        a:hover{
+          @include opacity(.5);
+        }
+      }
+    }
+  }
+}
+
+
+#new_hint{
+  .hint{
+    @include single-text-shadow(white, 1px, 1px, 5px);
+    float:left;
+    margin:20px 0px 0px 0px;
+  }
+  #text{
+    float:left;
+    width:100%;
+    margin:0px 0px 10px 0px;
+    .title{
+      width:20%;
+      font-weight:800;
+      padding:4px 0px 0px 0px;
+      color:darken($main-color,30%);
+      float:left;
+      text-align:right;
+    }
+    input, textarea{
+      width:73%;
+      @include box-shadow(darken($main-color,10%),0px,1px,10px);
+      @include border-radius(5px);
+      background-color:lighten($main-color,5%);
+      border:none;
+      margin:0px 0px 0px 5%;
+      font-size:1.1em;
+      padding:4px;
+      color:darken($main-color,30%);
+    }
+  }
+  #submit{
+    float:left;
+    margin:10px 0px 0px 25%;
+    .green_button{
+      padding:2px 6px;
+      margin:0px 15px 0px 0px;
+      input{
+        font-size:1em;
+      }
+    }
+  }
+}

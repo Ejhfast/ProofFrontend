@@ -1,0 +1,24 @@
+.proofline{:class => (f.object.color if f.object.color)}
+  .conclusion
+    = f.text_field :conclusion, :placeholder => 'Conclusion'
+  .rule
+    = f.select :ruleset, @select_rulesets, {}, :id => Time.now.to_f.to_s, :class => 'chzn-select'
+  .assumptions
+    = f.select :assumptions, @select_assumptions, {}, :multiple=>true, :class => 'chzn-select', 'data-placeholder'=>"Givens"
+  - if f.object.hash_str
+    - hints = Node.lookup_hints(f.object.hash_str, @assignment.id)
+    -if hints.size > 0
+      .hint
+        ?
+        .text
+          = hints.sample.text
+  - if f.object.hash_str && current_user.instructor
+    - @node_id = to_magage(f.object, @temp_parent) rescue nil
+    -if @node_id
+      .sm
+        = link_to 'W', '/manage/'+ @node_id.id.to_s + "?parent=#{@temp_parent.id.to_s}"
+    - @temp_parent = @node_id
+  = f.hidden_field :proven  
+  = f.hidden_field :_destroy
+  .del
+    *

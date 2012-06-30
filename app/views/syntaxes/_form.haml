@@ -1,0 +1,18 @@
+= form_for [@assignment, @syntax] do |f|
+  #name
+    .title Name:
+    = f.text_field :name
+    = f.hidden_field :assignment_id, :value => @assignment.id
+  #args
+    .title Number of Args:
+    = f.select :args, [[0,0],[1,1],[2,2],[3,3],[4,4]]
+  #submit
+    .green_button
+      =f.submit type_submit
+    #cancel
+      .blue_button#cancel
+        Cancel
+    - if delete
+      #delete
+        .blue_button
+          =link_to 'Delete', assignment_syntax_path(@assignment, @syntax), :method => :DELETE

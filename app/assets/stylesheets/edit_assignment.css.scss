@@ -1,0 +1,125 @@
+// Place all the styles related to the test controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3/gradient";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
+@import "compass/css3/opacity";
+
+
+@import "base";
+
+
+
+// real
+
+#edit_assignment{
+  .sec{
+    .title{
+      color:darken($main-color,60%);
+      font-weight:800;
+      padding:0px 0px 10px;
+      border-bottom:2px solid darken($main-color,10%);
+      span{
+        a{
+          color:darken(white,40%);
+          text-decoration:none;
+        }
+        margin-left:10px;
+      }
+    }
+  }
+  #manage_assignment{
+    float:left;
+    margin:30px 0px;
+    width:100%;
+    .title{
+      margin-bottom:10px;
+    }
+    .blue_button{
+      margin-right:10px;
+    }
+  }
+  #fields{
+    float:left;
+    width:100%;
+    margin:20px 0px;
+    #name,#description,#goal,#hide_goal,#visible{
+      float:left;
+      width:100%;
+      margin:10px 0px;
+      .title{
+        float:left;
+        width:20%;
+        font-weight:800;
+        color:darken($main-color,30%);
+        text-align:right;
+      }
+      input,textarea{
+        float:left;
+        width:75%;
+        @include box-shadow(darken($main-color,10%),0px,1px,10px);
+        @include border-radius(5px);
+        background-color:lighten($main-color,5%);
+        border:none;
+        margin:0px 0px 0px 5%;
+        font-size:1.1em;
+        padding:4px;
+        width:50%;
+        color:darken($main-color,30%);
+      }
+    }
+  }
+  .third{
+    width:33%;
+    float:left;
+    margin:20px 0px;
+    .title{
+      font-weight:800;
+      color:darken($main-color,30%);
+    }
+  }
+  #current_rulesets, #current_assumptions, #current_syntax{
+    margin:10px 0px;
+    width:90%;
+    ul{
+      a{
+        text-decoration:none;
+      }
+      li{
+        @include border-radius(5px);
+        background-color:lighten($main-color,5%);
+        @include box-shadow(darken($main-color,5%),0px,1px,20px);
+        color:darken($main-color,50%);
+        padding:5px;
+        text-align:center;
+        font-weight:200;
+        font-size:1em;
+        text-decoration:none;
+        margin:5px 0px;
+      }
+      li:hover{
+        @include opacity(.8);
+      }
+    }
+  }
+  #submit{
+    margin:40px 0px 10px 25%;
+    .green_button{
+      padding:2px 6px;
+      margin:0px 10px 0px 0px;
+    }
+    .blue_button{
+      margin-right:10px;
+    }
+    input{
+      text-weight:800;
+      font-size:1em;
+    }
+  }
+
+}
+
+
+

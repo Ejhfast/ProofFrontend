@@ -1,0 +1,124 @@
+// Place all the styles related to the assignments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "compass/css3/gradient";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
+@import "compass/css3/opacity";
+@import "base";
+
+#assignment_index{
+  #warning{
+    margin:20px 0px 0px 0px;
+    color:darken($main-color,60%);
+    width:75%;
+    float:left;
+    #symbol{
+      float:left;
+      font-family:'pictos';
+      font-size:1.6em;
+      padding:5px 10px 0px 10px;
+    }
+  }
+  #assignment_list{
+    margin:20px 0px 0px 0px;
+    width:75%;
+    float:left;
+    ul{
+      float:left;
+      width:100%;
+      li{
+        float:left;
+        width:98%;
+        margin:0px 0px 8px 0px;
+        padding:2%;
+        @include border-radius(5px);
+        @include box-shadow(darken($main-color,10%),0px,1px,20px);
+        background-color:lighten($main-color,5%);
+        font-size:1.1em;  
+        #assignment_name{
+          float:left;
+          font-weight:800;
+          color:darken($main-color,60%);
+        }
+        #assignment_posted{
+          float:left;
+          font-weight:200;
+          color:darken($main-color,60%);
+        }
+        .bridge{
+          float:left;
+          margin:0px 2%;
+          color:darken($main-color,20%);
+        }
+      }
+      li:hover{
+        @include opacity(.7);
+      }
+      a{
+        text-decoration:none;
+      }
+    }
+    #done{
+      span{
+        font-family:'pictos';
+        color:#54a24e;
+        font-size:1.4em;
+        padding:10px 10px 10px 10px;
+      }
+    }
+  }
+  #sidebar{
+    margin:20px 0px 0px 5%;
+    width:20%;
+    float:left;
+  }
+}
+
+#new_assignment{
+  .assignment{
+    @include single-text-shadow(white, 1px, 1px, 5px);
+    float:left;
+    margin:20px 0px 0px 0px;
+  }
+  #name,#description,#visible{
+    float:left;
+    width:100%;
+    margin:0px 0px 10px 0px;
+    .title{
+      width:20%;
+      font-weight:800;
+      padding:0px 0px 0px 0px;
+      color:darken($main-color,30%);
+      float:left;
+      text-align:right;
+    }
+    input, textarea{
+      width:65%;
+      @include box-shadow(darken($main-color,10%),0px,1px,10px);
+      @include border-radius(5px);
+      background-color:lighten($main-color,5%);
+      border:none;
+      margin:0px 0px 0px 5%;
+      font-size:1.1em;
+      padding:4px;
+      color:darken($main-color,30%);
+    }
+  }
+  #submit{
+    float:left;
+    margin:10px 0px 0px 25%;
+    .green_button{
+      padding:2px 6px;
+      margin:0px 15px 0px 0px;
+      input{
+        font-size:1em;
+      }
+    }
+  }
+}
+
+
+

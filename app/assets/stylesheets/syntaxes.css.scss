@@ -1,0 +1,59 @@
+// Place all the styles related to the syntaxes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import "compass/css3/gradient";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
+@import "compass/css3/opacity";
+@import "base";
+
+#new_syntax, #edit_syntax{
+  margin:20px 0px;
+  #name,#args{
+    float:left;
+    width:100%;
+    margin:0px 0px 10px 0px;
+    .title{
+      width:30%;
+      font-weight:800;
+      padding:4px 0px 0px 0px;
+      color:darken($main-color,30%);
+      float:left;
+      text-align:right;
+    }
+    input, textarea{
+      width:55%;
+      @include box-shadow(darken($main-color,10%),0px,1px,10px);
+      @include border-radius(5px);
+      background-color:lighten($main-color,5%);
+      border:none;
+      margin:0px 0px 0px 5%;
+      font-size:.8em;
+      padding:6px 3px;
+      color:darken($main-color,30%);
+    }
+    select{
+      margin:3px 0px 0px 5%;
+      font-size:1.2em;
+    }
+  }
+  #submit{
+    float:left;
+    width:100%;
+    margin:10px 0px;
+    .blue_button{
+      margin:0px 10px 0px 0px;
+    }
+    .green_button{
+      padding:2px 6px;
+      margin:0px 10px 0px 35%;
+      input{
+        font-weight:800;
+        font-size:1em;
+      }
+    }
+  }
+}

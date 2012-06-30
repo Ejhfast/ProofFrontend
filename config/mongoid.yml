@@ -1,0 +1,27 @@
+development:
+  host: walt.mongohq.com
+  port: 10041
+  database: proofdata
+  username: test
+  password: ethanuser
+  #identity_map_enabled: true
+
+test:
+  host: walt.mongohq.com
+  port: 10041
+  database: proofdata
+  username: test
+  password: ethanuser
+
+# set these environment variables on your prod server
+production:
+  host: <%= ENV['MONGOID_HOST'] %>
+  port: <%= ENV['MONGOID_PORT'] %>
+  username: <%= ENV['MONGOID_USERNAME'] %>
+  password: <%= ENV['MONGOID_PASSWORD'] %>
+  database: <%= ENV['MONGOID_DATABASE'] %>
+  # slaves:
+  #   - host: slave1.local
+  #     port: 27018
+  #   - host: slave2.local
+  #     port: 27019

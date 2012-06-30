@@ -1,0 +1,22 @@
+#login
+  .sec
+    .title
+      Login
+  #flash
+    =flash[:notice]
+  .half
+    =form_tag sessions_path do
+      #email
+        .title Email:
+        =text_field_tag :email, params[:email]
+      #password
+        .title Password:
+        =password_field_tag :password
+      #submit.green_button
+        =submit_tag "Log in"
+  #sidebar
+    For students enrolled in the compilers course:
+    .green_button
+      =link_to 'Stanford login via Coursera', '/stanford_login'
+    .green_button
+      =link_to 'Public login via Coursera', '/public_login'
